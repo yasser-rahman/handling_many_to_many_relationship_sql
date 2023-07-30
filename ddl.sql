@@ -26,12 +26,13 @@ CREATE TABLE books(
 );
 
 -- Create an association table
-CREATE TABLE user_book_preferenes(
+DROP TABLE IF EXISTS user_book_preferences;
+CREATE TABLE user_book_preferences(
 	user_id INTEGER,
 	book_id INTEGER,
 	preference INTEGER,
 	PRIMARY KEY(user_id, book_id),
-	FOREIGN KEY(user_id) REFERENCES users(id),
-	FOREIGN KEY(book_id) REFERENCES books(id),
+	FOREIGN KEY(user_id) REFERENCES users(id) ON DELETE CASCADE,
+	FOREIGN KEY(book_id) REFERENCES books(id) ON DELETE RESTRICT,
 	UNIQUE(user_id, preference)
 );
