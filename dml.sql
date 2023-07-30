@@ -13,9 +13,9 @@ ALTER TABLE "user_book_preferences"
 
 
 -- Foreign keys
-ALTER TABLE "user_book_preferences"
-  ADD FOREIGN KEY ("user_id") REFERENCES "users",
-  ADD FOREIGN KEY ("book_id") REFERENCES "books";
+ALTER TABLE "ser_book_preferences"
+  ADD FOREIGN KEY (user_id) REFERENCES users ON DELETE CASCADE,
+  ADD FOREIGN KEY (book_id) REFERENCES books ON DELETE RESTRICT;
 
 
 -- Usernames need to have a minimum of 5 characters
